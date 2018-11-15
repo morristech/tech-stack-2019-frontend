@@ -1,10 +1,10 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
-module.exports = {
-  mode: 'development',
+module.exports = (env) => ({
+  mode: env.NODE_ENV === 'production' ? 'production': 'development',
   entry: './src/index.tsx',
-  devtool: 'inline-source-map',
+  devtool: env.NODE_ENV === 'production' ? 'source-map' : 'inline-source-map',
   devServer: {
     contentBase: './dist',
   },
@@ -29,4 +29,4 @@ module.exports = {
       'public/index.html',
     ]),
   ],
-};
+});
