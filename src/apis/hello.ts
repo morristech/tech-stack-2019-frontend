@@ -1,8 +1,9 @@
 import Ajv from 'ajv';
+import env from './env';
 export interface Hello {
   hello: string;
 }
-const ENDPOINT = 'http://localhost:3000';
+const ENDPOINT = env.helloEndpoint;
 const SCHEMA = {
   $schema: 'http://json-schema.org/draft-07/schema#',
   description: 'Hello API',
