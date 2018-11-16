@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-
-const API = 'http://localhost:3000';
+import { fetchHello } from '../apis/hello';
 
 class App extends PureComponent {
   public state = {
@@ -11,8 +10,7 @@ class App extends PureComponent {
 
   public async componentDidMount() {
     try {
-      const response = await fetch(API);
-      const { hello } = await response.json();
+      const { hello } = await fetchHello();
       this.setState({
         fetching: false,
         hello,
