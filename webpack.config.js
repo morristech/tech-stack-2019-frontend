@@ -28,7 +28,7 @@ let UsedEnvPlugin;
 if (fs.existsSync(ENV_FILE)) {
   ENV_KEYS.map(key => delete process.env[key]);
   const envParseResult = dotenv.config();
-  if (envParseResult.error) { throw new Error(envParseResult.error); }
+  if (envParseResult.error) { throw new Error('Invalid Environment File'); }
   UsedEnvPlugin = new DotenvWebpack();
 } else {
   UsedEnvPlugin = new webpack.EnvironmentPlugin(ENV_KEYS);
