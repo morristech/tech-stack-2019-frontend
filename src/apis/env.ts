@@ -1,9 +1,10 @@
 export interface Env {
-  helloEndpoint: string;
+  HELLO_ENDPOINT: string;
 }
 
+const { HELLO_ENDPOINT } = process.env;
 const env = {
-  helloEndpoint: process.env.HELLO_ENDPOINT,
+  HELLO_ENDPOINT,
 };
 // VALIDATED IN WEBPACK
 export default env as Env;

@@ -3,7 +3,8 @@ import env from './env';
 export interface Hello {
   hello: string;
 }
-const ENDPOINT = env.helloEndpoint;
+
+const ENDPOINT = env.HELLO_ENDPOINT;
 const SCHEMA = {
   $schema: 'http://json-schema.org/draft-07/schema#',
   description: 'Hello API',

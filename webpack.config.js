@@ -1,7 +1,12 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
-const usedEnvPlugin = require('./usedEnvPlugin');
+const webpack = require('webpack');
+const updateEnv = require('./updateEnv');
 
+const ENV_KEYS=['HELLO_ENDPOINT'];
+
+const validEnv = updateEnv(ENV_KEYS);
+if (!validEnv) { throw new Error('Invalid Environment'); }
 module.exports = (env) => ({
   mode: env.NODE_ENV === 'production' ? 'production': 'development',
   entry: './src/index.tsx',
@@ -29,6 +34,6 @@ module.exports = (env) => ({
     new CopyWebpackPlugin([
       'public/index.html',
     ]),
-    usedEnvPlugin,
+    new webpack.EnvironmentPlugin(ENV_KEYS),
   ],
 });
